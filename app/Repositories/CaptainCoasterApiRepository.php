@@ -11,12 +11,13 @@ class CaptainCoasterApiRepository implements CoasterRepository
 {
 
     private $api_auth_token = 'c8435c21-2d27-4927-96d3-14e42f3b827e';
+    private $url = 'https://captaincoaster.com/api/coasters';
 
     public function get($id)
     {
         $response = Http::withHeaders([
             'X-AUTH-TOKEN' => $this->api_auth_token
-        ])->get('https://captaincoaster.com/api/coasters', [
+        ])->get($this->url, [
             'id' => $id
         ]);
         $data = json_decode($response, true)['hydra:member'][0];
@@ -25,7 +26,17 @@ class CaptainCoasterApiRepository implements CoasterRepository
 
     public function all($page)
     {
-        // TODO: Implement all() method.
+        $response = Http::withHeaders([
+            'X-AUTH-TOKEN' => $this->api_auth_token
+        ])->get($this->url, [
+            'page' => $page
+        ]);
+        $coasters = [];
+        $dataCollection = json_decode($response, true)['hydra:member'];
+        foreach ($dataCollection as $coasterData) {
+            array_push($coasters, $this->makeCoaster($coasterData));
+        }
+        return $coasters;
     }
 
     private function makeCoaster($data): Coaster
