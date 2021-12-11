@@ -39,6 +39,17 @@ class CaptainCoasterApiRepository implements CoasterRepository
         return $coasters;
     }
 
+    public function count()
+    {
+        $response = Http::withHeaders([
+            'X-AUTH-TOKEN' => $this->api_auth_token
+        ])->get($this->url);
+
+        return json_decode($response, true)['hydra:totalItems'];
+    }
+
+
+
     private function makeCoaster($data): Coaster
     {
         return new Coaster(
