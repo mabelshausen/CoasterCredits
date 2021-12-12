@@ -1,0 +1,21 @@
+
+#coasters {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#coasters td, #coasters th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#coasters tr:nth-child(even){background-color: #f2f2f2;}
+
+#coasters th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background: #3b82f6;
+    opacity: 0.5;
+    color: white;
+}

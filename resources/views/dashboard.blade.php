@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-        <table>
+        <table id="coasters">
             <thead>
             <th>Name</th>
             <th>Park</th>
@@ -14,6 +14,7 @@
             <th>Type</th>
             <th>Rank</th>
             <th>Status</th>
+            <th></th>
             </thead>
 
             <tbody>
@@ -25,6 +26,7 @@
                     <td>{{$coaster->seatingType}}</td>
                     <td>{{$coaster->rank}}</td>
                     <td>{{$coaster->status}}</td>
+                    <td><a href="{{ route('coaster-detail', ['id' => $coaster->id]) }}">View</a></td>
                 </tr>
             @endforeach
             </tbody>
