@@ -28,4 +28,10 @@ class CoasterController extends Controller
             'lastPage' => $this->lastPage
         ]);
     }
+
+    public function showCoasterDetail($id) {
+        return view('coaster-detail', [
+            'coaster' => $this->coasterRepo->get($id)
+        ]);
+    }
 }

@@ -22,4 +22,8 @@ Route::get('/dashboard', [CoasterController::class, 'showCoasters'])
     ->middleware('auth')
     ->name('dashboard');
 
+Route::get('/coasters/{id}', [CoasterController::class, 'showCoasterDetail'])
+    ->middleware('auth')
+    ->name('coaster-detail');
+
 require __DIR__.'/auth.php';
