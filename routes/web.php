@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CreditController;
+use App\Http\Controllers\CreditFormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoasterController;
 
@@ -30,5 +31,13 @@ Route::get('/coasters/{id}', [CoasterController::class, 'showCoasterDetail'])
 Route::get('/credits', [CreditController::class, 'showCredits'])
     ->middleware('auth')
     ->name('credits');
+
+Route::get('/edit-credit/{id}', [CreditFormController::class, 'showForm'])
+    ->middleware('auth')
+    ->name('edit-credit');
+
+Route::post('/edit-credit/{id}', [CreditFormController::class, 'saveCredit'])
+    ->middleware('auth')
+    ->name('save-credit');
 
 require __DIR__.'/auth.php';

@@ -31,7 +31,7 @@
                         @if(array_key_exists($coaster->id, $credits))
                             <div>{{ $credits[$coaster->id] }}</div>
                         @else
-                            <button>Add Credit</button>
+                            <a href="{{ route('edit-credit', ['id' => $coaster->id]) }}">Add Credit</a>
                         @endif
                     </td>
                     <td><a href="{{ route('coaster-detail', ['id' => $coaster->id]) }}">View</a></td>
