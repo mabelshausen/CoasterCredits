@@ -14,6 +14,7 @@
             <th>Type</th>
             <th>Rank</th>
             <th>Status</th>
+            <th>Ridden</th>
             <th></th>
             </thead>
 
@@ -26,6 +27,13 @@
                     <td>{{$coaster->seatingType}}</td>
                     <td>{{$coaster->rank}}</td>
                     <td>{{$coaster->status}}</td>
+                    <td>
+                        @if(array_key_exists($coaster->id, $credits))
+                            <div>{{ $credits[$coaster->id] }}</div>
+                        @else
+                            <button>Add Credit</button>
+                        @endif
+                    </td>
                     <td><a href="{{ route('coaster-detail', ['id' => $coaster->id]) }}">View</a></td>
                 </tr>
             @endforeach
