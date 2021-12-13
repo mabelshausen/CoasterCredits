@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreditController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoasterController;
 
@@ -25,5 +26,9 @@ Route::get('/dashboard', [CoasterController::class, 'showCoasters'])
 Route::get('/coasters/{id}', [CoasterController::class, 'showCoasterDetail'])
     ->middleware('auth')
     ->name('coaster-detail');
+
+Route::get('/credits', [CreditController::class, 'showCredits'])
+    ->middleware('auth')
+    ->name('credits');
 
 require __DIR__.'/auth.php';
