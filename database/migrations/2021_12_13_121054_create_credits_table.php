@@ -18,7 +18,7 @@ class CreateCreditsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->integer('coaster_id');
             $table->timestamp('first_ride_date')->nullable();
-            $table->integer('rides-count')->nullable();
+            $table->integer('rides_count')->nullable();
             $table->timestamps();
         });
     }
