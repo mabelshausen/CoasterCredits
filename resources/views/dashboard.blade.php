@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-        <table id="coasters">
+        <table id="table">
             <thead>
             <th>Name</th>
             <th>Park</th>

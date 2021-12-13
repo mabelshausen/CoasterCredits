@@ -1,17 +1,17 @@
 
-#coasters {
+#table {
     border-collapse: collapse;
     width: 100%;
 }
 
-#coasters td, #coasters th {
+#table td, #table th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#coasters tr:nth-child(even){background-color: #f2f2f2;}
+#table tr:nth-child(even){background-color: #f2f2f2;}
 
-#coasters th {
+#table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
