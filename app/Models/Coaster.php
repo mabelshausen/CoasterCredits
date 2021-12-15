@@ -16,6 +16,7 @@ class Coaster
     public $inversionsNumber;
     public $manufacturer;
     public $park;
+    public $park_id;
     public $status;
     public $rank;
     public $imagePath;
@@ -34,6 +35,7 @@ class Coaster
         $inversionsNumber,
         $manufacturer,
         $park,
+        $park_id,
         $status,
         $rank,
         $imagePath
@@ -49,6 +51,7 @@ class Coaster
         $this->inversionsNumber = $inversionsNumber;
         $this->manufacturer = $manufacturer;
         $this->park = $park;
+        $this->park_id = $park_id;
         $this->status = $status;
         $this->rank = $rank;
         $this->imagePath = $imagePath;
