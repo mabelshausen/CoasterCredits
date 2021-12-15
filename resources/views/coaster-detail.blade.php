@@ -59,7 +59,8 @@
 
         <div id="single-coaster-map" class="map"></div>
         <script>
-            let coaster = @json($coaster);
+            let park = @json($park);
+
             const map = new ol.Map({
                 target: 'single-coaster-map',
                 layers: [
@@ -68,7 +69,7 @@
                     })
                 ],
                 view: new ol.View({
-                    center: ol.proj.fromLonLat([4.34878, 50.85045]),
+                    center: ol.proj.fromLonLat([park['longitude'], park['latitude']]),
                     zoom: 10
                 })
             });
