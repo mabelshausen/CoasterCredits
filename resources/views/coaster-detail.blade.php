@@ -56,5 +56,23 @@
         <div>
             <img src="https://captaincoaster.com/images/coasters/{{$coaster->imagePath}}">
         </div>
+
+        <div id="single-coaster-map" class="map"></div>
+        <script>
+            let coaster = @json($coaster);
+            const map = new ol.Map({
+                target: 'single-coaster-map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([4.34878, 50.85045]),
+                    zoom: 10
+                })
+            });
+        </script>
     </div>
 </x-app-layout>
+
