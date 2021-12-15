@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\CoasterRepository',
             'App\Repositories\CaptainCoasterApiRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\ParkRepository',
+            'App\Repositories\CaptainParkApiRepository'
+        );
     }
 
     /**
