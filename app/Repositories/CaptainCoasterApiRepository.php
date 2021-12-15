@@ -17,10 +17,8 @@ class CaptainCoasterApiRepository implements CoasterRepository
     {
         $response = Http::withHeaders([
             'X-AUTH-TOKEN' => $this->api_auth_token
-        ])->get($this->url, [
-            'id' => $id
-        ]);
-        $data = json_decode($response, true)['hydra:member'][0];
+        ])->get($this->url."/".$id);
+        $data = json_decode($response, true);
         return $this->makeCoaster($data);
     }
 
