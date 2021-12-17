@@ -15,7 +15,7 @@ function createParkMap(park) {
         })
     });
 
-    addMarkers(map, createMarkerFromCoordinates(coordinates));
+    addMarkers(map, createMarkerFromCoordinates(coordinates), "../images/marker.png");
 }
 
 function createParksMap(parks) {
@@ -34,17 +34,18 @@ function createParksMap(parks) {
        })
     });
 
-    addMarkers(map, createMarkersFromParks(parks));
+    addMarkers(map, createMarkersFromParks(parks), "../images/marker.png");
+    addHomeMarker(map);
 }
 
-function addMarkers(map, markers) {
+function addMarkers(map, markers, markerImage) {
     const markerVectors = new ol.source.Vector({
         features: markers
     });
 
     const markerStyle = new ol.style.Style({
         image: new ol.style.Icon({
-            src: "../images/marker.png",
+            src: markerImage,
             anchor: [0.5, 1]
         })
     });
@@ -78,4 +79,15 @@ function createMarkersFromParks(parks) {
     });
 
     return markers;
+}
+
+function addHomeMarker(map) {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+            addMarkers(map,
+                createMarkerFromCoordinates([pos.coords.longitude, pos.coords.latitude]),
+                "../images/home-marker.png"
+            );
+        });
+    }
 }
