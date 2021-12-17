@@ -33,10 +33,13 @@
         <canvas id="barchart" class="chart"></canvas>
         <canvas id="scatterplot" class="chart"></canvas>
     </div>
+    <div id="all-parks-map" class="map"></div>
     <script>
         let credits = @json($credits);
         let coasters = @json($coasters);
+        let parks = @json($parks);
         createCreditChart(credits);
         createCoastersChart(coasters);
+        createParksMap(parks);
     </script>
 </x-app-layout>
