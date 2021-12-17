@@ -31,9 +31,12 @@
 
     <div>
         <canvas id="barchart" class="chart"></canvas>
+        <canvas id="scatterplot" class="chart"></canvas>
     </div>
     <script>
         let credits = @json($credits);
+        let coasters = @json($coasters);
         createCreditChart(credits);
+        createCoastersChart(coasters);
     </script>
 </x-app-layout>

@@ -31,10 +31,45 @@ const creditChartOptions = {
     }
 };
 
+const scatterPlotOptions = {
+    plugins: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: "Rollercoaster height by top speed"
+        },
+        tooltip: {
+            callbacks: {
+                label: function(ctx) {
+                    return ctx.dataset.labels[ctx.dataIndex];
+                }
+            }
+        }
+    },
+    scales: {
+        x: {
+            title: {
+                display: true,
+                text: "Top speed (km/h)"
+            },
+            beginAtZero: true
+        },
+        y: {
+            title: {
+                display: true,
+                text: "Height (m)"
+            },
+            beginAtZero: true
+        }
+    }
+};
+
 function createCreditChart(credits) {
     let data = formatCreditsData(credits);
     const ctx = document.querySelector('#barchart').getContext('2d');
-    
+
     const configuration = {
         type: 'bar',
         data: {
@@ -48,6 +83,31 @@ function createCreditChart(credits) {
             ]
         },
         options: creditChartOptions
+    };
+
+    new Chart(ctx, configuration);
+}
+
+function createCoastersChart(coasters) {
+    let dataAndLabels = formatCoastersData(coasters);
+    let data = dataAndLabels[0];
+    let labels = dataAndLabels[1];
+    const ctx = document.querySelector('#scatterplot').getContext('2d');
+
+    const configuration = {
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                    labels: labels,
+                    data: data,
+                    backgroundColor: ['rgba(59, 130, 246, 0.5)'],
+                    borderColor: ['rgba(59, 130, 246, 0.8)'],
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: scatterPlotOptions
     };
 
     new Chart(ctx, configuration);
@@ -68,4 +128,19 @@ function formatCreditsData(credits) {
     });
 
     return data;
+}
+
+function formatCoastersData(coasters) {
+    let data = [];
+    let labels = [];
+
+    _.map(coasters, function (coaster) {
+        data.push({
+            'y': coaster['height'],
+            'x': coaster['speed']
+        });
+        labels.push(coaster['name']);
+    });
+
+    return [data, labels];
 }
