@@ -12,7 +12,7 @@ class CreditFormController extends Controller
 {
 
     public function showForm($id) {
-        $credit = Credit::where('coaster_id', $id)->firstOrNew();
+        $credit = Credit::where(['coaster_id' => $id, 'user_id' => Auth::user()->id])->firstOrNew();
         return view('credit-form', [
             'coaster_id' => $id,
             'first_ride_date' => date('Y-m-d', strtotime($credit->first_ride_date)),
@@ -21,7 +21,7 @@ class CreditFormController extends Controller
     }
 
     public function saveCredit(Request $request, $id) {
-        $credit = Credit::where('coaster_id', $id)->firstOrNew();
+        $credit = Credit::where(['coaster_id' => $id, 'user_id' => Auth::user()->id])->firstOrNew();
         $credit->user_id = Auth::user()->id;
         $credit->coaster_id = $id;
 
