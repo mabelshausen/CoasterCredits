@@ -20,7 +20,7 @@ class CreditController extends Controller
     }
 
     public function showCredits() {
-        $credits = Credit::where('user_id', Auth::user()->id)->get();
+        $credits = Credit::where('user_id', Auth::user()->id)->orderBy('first_ride_date', 'desc')->get();
         $coasters = [];
         $parks = [];
 

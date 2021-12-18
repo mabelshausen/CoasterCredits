@@ -31,7 +31,7 @@ class CoasterController extends Controller
         $credits = Credit::where('user_id', Auth::user()->id)->get();
         $creditsTransform = [];
         foreach ($credits as $credit) {
-            $creditsTransform[$credit->coaster_id] = $credit->first_ride_date;
+            $creditsTransform[$credit->coaster_id] = date('d-m-Y', strtotime($credit->first_ride_date));
         }
 
         return view('dashboard', [

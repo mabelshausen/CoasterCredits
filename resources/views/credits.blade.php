@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ $coasters[$credit->id]->name }}</td>
                     <td>{{ $coasters[$credit->id]->park }}</td>
-                    <td>{{ $credit->first_ride_date }}</td>
+                    <td>{{ date('d-m-Y', strtotime($credit->first_ride_date)) }}</td>
                     <td>{{ $credit->rides_count }}</td>
                     <td>
                         <a href="{{ route('edit-credit', ['id' => $coasters[$credit->id]->id]) }}">Edit</a>
