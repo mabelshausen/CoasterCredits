@@ -26,7 +26,14 @@ class CoasterController extends Controller
 
     public function showCoasters() {
         $this->currentPage = (isset($_REQUEST['page'])) ? $_REQUEST['page'] : 1;
+        $searchParm = (isset($_REQUEST['search'])) ? $_REQUEST['search'] : null;
         $this->lastPage = ceil($this->coasterRepo->count() / $this->coastersPerPage);
+
+        if ($searchParm) {
+            $coasters = $this->coasterRepo->getByName($searchParm);
+        } else {
+            $coasters = $this->coasterRepo->all($this->currentPage);
+        }
 
         $credits = Credit::where('user_id', Auth::user()->id)->get();
         $creditsTransform = [];
@@ -35,7 +42,7 @@ class CoasterController extends Controller
         }
 
         return view('dashboard', [
-            'coasters' => $this->coasterRepo->all($this->currentPage),
+            'coasters' => $coasters,
             'currentPage' => $this->currentPage,
             'lastPage' => $this->lastPage,
             'credits' => $creditsTransform

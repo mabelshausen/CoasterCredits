@@ -6,6 +6,13 @@
     </x-slot>
 
     <div>
+        <form action="{{ route('dashboard') }}" method="get">
+            {{ csrf_field() }}
+            <input type="search" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div>
         <table id="table">
             <thead>
             <th>Name</th>
