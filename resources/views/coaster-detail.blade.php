@@ -57,7 +57,11 @@
             <img src="https://captaincoaster.com/images/coasters/{{$coaster->imagePath}}">
         </div>
 
-        <div id="single-coaster-map" class="map"></div>
+        <div class="map-container">
+            <div id="single-coaster-map" class="map"></div>
+            <div id="fullscreen" class="material-icons">fullscreen</div>
+            <div id="fullscreen_exit" class="material-icons invisible">fullscreen_exit</div>
+        </div>
         <script>
             let park = @json($park);
             createParkMap(park);

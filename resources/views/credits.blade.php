@@ -33,7 +33,11 @@
         <canvas id="barchart" class="chart"></canvas>
         <canvas id="scatterplot" class="chart"></canvas>
     </div>
-    <div id="all-parks-map" class="map"></div>
+    <div class="map-container">
+        <div id="all-parks-map" class="map"></div>
+        <div id="fullscreen" class="material-icons">fullscreen</div>
+        <div id="fullscreen_exit" class="material-icons invisible">fullscreen_exit</div>
+    </div>
     <script>
         let credits = @json($credits);
         let coasters = @json($coasters);

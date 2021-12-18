@@ -16,6 +16,7 @@ function createParkMap(park) {
     });
 
     addMarkers(map, createMarkerFromCoordinates(coordinates), "../images/marker.png");
+    handleFullscreen();
 }
 
 function createParksMap(parks) {
@@ -36,6 +37,7 @@ function createParksMap(parks) {
 
     addMarkers(map, createMarkersFromParks(parks), "../images/marker.png");
     addHomeMarker(map);
+    handleFullscreen();
 }
 
 function addMarkers(map, markers, markerImage) {
@@ -90,4 +92,24 @@ function addHomeMarker(map) {
             );
         });
     }
+}
+
+function handleFullscreen() {
+    document.querySelector("#fullscreen").addEventListener("click", fullscreenToggle);
+    document.querySelector("#fullscreen_exit").addEventListener("click", fullscreenToggle);
+    document.querySelector(".map-container").addEventListener("fullscreenchange", ev => {
+        ev.currentTarget.querySelectorAll(".material-icons").forEach(icon => {
+            icon.classList.toggle("invisible");
+        });
+    });
+}
+
+function fullscreenToggle(event) {
+    const target = event.currentTarget;
+    const parent = target.parentElement;
+
+    if (target.innerText === "fullscreen")
+        parent.requestFullscreen();
+    else
+        document.exitFullscreen();
 }
