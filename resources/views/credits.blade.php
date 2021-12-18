@@ -22,7 +22,9 @@
                     <td>{{ $coasters[$credit->id]->park }}</td>
                     <td>{{ $credit->first_ride_date }}</td>
                     <td>{{ $credit->rides_count }}</td>
-                    <td></td>
+                    <td>
+                        <a href="{{ route('edit-credit', ['id' => $coasters[$credit->id]->id]) }}">Edit</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
