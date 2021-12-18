@@ -64,6 +64,18 @@ class CaptainCoasterApiRepository implements CoasterRepository
 
     private function makeCoaster($data): Coaster
     {
+        $statuses = [
+            'status.operating' => 'Operating',
+            'status.closed.definitely' => 'Permanently Closed',
+            'status.construction' => 'Under Construction',
+            'status.relocated' => 'Relocated',
+            'status.announced' => 'Announced',
+            'status.unknown' => 'Unknown',
+            'status.retracked' => 'Retracked',
+            'status.closed.temporarily' => 'Temporarily Closed',
+            'status.rumored' => 'Rumored'
+        ];
+
         return new Coaster(
             $data['id'],
             $data['name'],
@@ -76,7 +88,7 @@ class CaptainCoasterApiRepository implements CoasterRepository
             ($data['manufacturer']) ? $data['manufacturer']['name'] : null,
             ($data['park']) ? $data['park']['name'] : null,
             ($data['park']) ? explode('/', $data['park']['@id'])[3] : null,
-            ($data['status']) ? $data['status']['name'] : null,
+            ($data['status']) ? $statuses[$data['status']['name']] : null,
             $data['rank'],
             ($data['mainImage']) ? $data['mainImage']['path'] : null
         );
