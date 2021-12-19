@@ -1,0 +1,60 @@
+
+$theme-color: #3b82f6;
+$map-height: 400px;
+$chart-height: 400px;
+$chart-width: 600px;
+
+@mixin dimensions($height, $width) {
+    height: $height;
+    width: $width;
+}
+
+#table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background: $theme-color;
+        opacity: 0.5;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+}
+
+.map {
+    @include dimensions($map-height, 100%);
+}
+
+.chart {
+    @include dimensions($chart-height, $chart-width);
+}
+
+.map-container {
+    position: relative;
+
+    .invisible {
+        display: none;
+    }
+}
+
+.map-container:fullscreen .map {
+    height: 100%;
+}
+
+.material-icons {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}

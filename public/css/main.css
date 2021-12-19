@@ -1,50 +1,55 @@
-
 #table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
-
-#table td, #table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#table tr:nth-child(even){background-color: #f2f2f2;}
-
 #table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background: #3b82f6;
-    opacity: 0.5;
-    color: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background: #3b82f6;
+  opacity: 0.5;
+  color: white;
+}
+#table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
 .map {
-    height: 400px;
-    width: 100%;
+  height: 400px;
+  width: 100%;
 }
 
 .chart {
-    height: 400px;
-    width: 600px;
+  height: 400px;
+  width: 600px;
 }
 
 .map-container {
-    position: relative;
+  position: relative;
+}
+.map-container .invisible {
+  display: none;
 }
 
-.map-container .invisible {
-    display: none;
+.map-container:-webkit-full-screen .map {
+  height: 100%;
+}
+
+.map-container:-ms-fullscreen .map {
+  height: 100%;
 }
 
 .map-container:fullscreen .map {
-    height: 100%;
+  height: 100%;
 }
 
 .material-icons {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
 }
